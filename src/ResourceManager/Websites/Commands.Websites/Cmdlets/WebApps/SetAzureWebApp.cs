@@ -87,6 +87,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string[] HostNames { get; set; }
 
+
+        [Parameter(Position = 16, Mandatory = false, HelpMessage = "Destination slot name for auto swap")]
+        public string AutoSwapSlotName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -117,7 +121,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                     : null,
                             WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
                             Use32BitWorkerProcess =
-                                parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null
+                                parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
+                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null
                         };
                     }
 
