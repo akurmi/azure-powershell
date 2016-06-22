@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                     : null,
                             WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
                             Use32BitWorkerProcess =
-                                parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null
+                                parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
                         };
                     }
 
