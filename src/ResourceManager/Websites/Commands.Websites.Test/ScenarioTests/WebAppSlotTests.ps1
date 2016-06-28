@@ -763,7 +763,7 @@ function Test-WebAppRegularSlotSwap
 	$destinationSlotName = "production"
 
 	# Swap Web App slots
-	$webApp = Swap-AzureRmWebAppSlots -ResourceGroupName $rgname -Name  $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName
+	$webApp = Swap-AzureRmWebAppSlots -ResourceGroupName $rgname -Name  $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -Force
 }
 
 <#
@@ -806,13 +806,13 @@ function Test-SlotSwapWithPreview($swapWithPreviewAction)
 	Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
 
 	# Let's apply slot config and make sure that app setting values have been swapped
-	Swap-AzureRmWebAppSlots -ResourceGroupName $rgname -Name  $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction 'ApplySlotConfig'
+	Swap-AzureRmWebAppSlots -ResourceGroupName $rgname -Name  $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction 'ApplySlotConfig'  -Force
 	Start-Sleep -s 30
 	$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
 	Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalDestinationAppSettingValue
 
 	# Let's finish the current slot swap operation (complete or reset)
-	Swap-AzureRmWebAppSlots -ResourceGroupName $rgname -Name  $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction $swapWithPreviewAction
+	Swap-AzureRmWebAppSlots -ResourceGroupName $rgname -Name  $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction $swapWithPreviewAction  -Force
 	Start-Sleep -s 30
 	$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
 	Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
