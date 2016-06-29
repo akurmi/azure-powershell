@@ -7,6 +7,9 @@
 	* Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
   * Restore-AzureRmSqlDatabase now supports point-in-time restore of a deleted database
   * Restore-AzureRmSqlDatabase now supports restoring from a Long Term Retention backup
+* Web Apps
+  * Add Swap-AzureRmWebAppSlots cmdlet for regular swap and swap with preview
+  * Extend Set-AzureRmWebAppSlot cmdlet to support auto swap
 
 ##2016.06.01 version 1.5.0
 * Azure Resource Manager
